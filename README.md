@@ -26,6 +26,7 @@ This project was developed during a month as a school project for Paris Descarte
     <li>Confirmation of done action if one happened on DB displayed on a toast</li>
     <li>Handles the conflict between two events if happening at the same time</li>
     <li>Single page design </li>
+    <li>Fully responsive</li>
 </ul>
 
 ---
@@ -36,7 +37,7 @@ This project was developed during a month as a school project for Paris Descarte
 **Front-end** : Angular 7 <br />
 **Database** : MySQL <br />
 
-**Some other ones** : Angular-Material, Angular-Draggable-Droppable, ngx-toastr, etc...
+**Some other ones** : Ng-Bootstrap, Angular-Draggable-Droppable, ngx-toastr, etc...
 
 ---
 
