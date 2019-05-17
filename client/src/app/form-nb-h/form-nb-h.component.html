@@ -1,0 +1,26 @@
+<div *ngIf="selectedNbH"> 
+
+  <div *ngIf="selectedNbH[2]">
+
+    <div class="card">
+      <div class="card-body">
+        <input (keyup.enter)="editNbH($event.target.value);" class="form-control" placeholder="Enter new hours value">
+        <button type="button" class="btn btn-danger" (click)="deleteNbH()">Supprimer</button>
+        <button type="button" class="btn btn-light" (click)="sendMessage()">Fermer</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="undefined === selectedNbH[2]">
+
+    <div class="card">
+      <div class="card-body">
+        <input (keyup.enter)="createNbH($event.target.value);" class="form-control" placeholder="Enter new hours value">
+        <button type="button" class="btn btn-light" (click)="sendMessage()">Fermer</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

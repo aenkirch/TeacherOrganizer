@@ -1,0 +1,35 @@
+<div class="table-responsive" *ngIf="undefined !== periodes && periodes[0]">
+  <table class="table" mwlDroppable (cdkDropListDropped)="onListDrop($event)"> <!--LE TABLE NE PREND PAS LA TAILLE QUE JE SOUHAITE LUI DONNER !-->
+    <thead>
+      <tr>
+        <th></th>
+        <th style="text-align: center;" scope="col" *ngFor="let periode of periodes">Période {{periode.id_period}}</th>
+      </tr>
+    </thead>
+  
+    <tbody *ngFor="let module of formationModules">
+      <tr class="module">
+        <td scope="row">UE {{module.id}} : {{module.name}}</td>
+        <td *ngFor="let periode of periodes"></td>
+      </tr>
+  
+      <ng-container *ngFor="let matiere of formationMatieres">
+        <tr *ngIf="matiere.id_ue === module.id">
+          <td style.color="{{matiere.couleur}}">- {{matiere.label}}</td>
+          <ng-container *ngFor="let periode of periodes">
+            <td (dblclick)="isEditing(matiere.value, periode.id_period)" style.color="{{matiere.couleur}}" class="dataCell" mwlDroppable dragOverClass="drop-over-active" (drop)="dragEnd(matiere.value, periode.id_period)">
+              <span *ngIf="tabNbH[matiere.value] && tabNbH[matiere.value][periode.id_period] != 0" mwlDraggable (dragEnd)="this.draggedMatiere = matiere.value; this.draggedPeriode = periode.id_period;">{{tabNbH[matiere.value][periode.id_period]}}</span>
+            </td>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </tbody>
+
+    <tfoot>
+        <tr class="total">
+          <td>Total</td>
+          <td class="dataCell" *ngFor="let periode of periodes">{{tabTotaux[periode.id_period]}}</td>
+        </tr>
+    </tfoot>
+  </table>      
+</div>

@@ -1,0 +1,42 @@
+<div id="wrapper">
+
+  <navbar></navbar>
+
+  <div class="container">
+
+    <div class="row justify-content-md-center">
+
+      <div *ngIf="undefined === formations">Loading...</div>
+      <div class="m-4" *ngIf="undefined !== formations">
+        <select class="custom-select" [(ngModel)]="selectedValue" (change)="getGroupes($event)">
+          <option *ngFor="let formation of formations" [value]="formation" id="{{formation.id}}">
+            {{formation.value}}
+          </option>
+        </select>
+      </div>
+
+      <div class="m-4" *ngIf="undefined !== groupes">
+        <select class="custom-select" [(ngModel)]="selectedValue" (change)="showTable($event)">
+          <option *ngFor="let groupe of groupes" [value]="groupe" id="{{groupe.id}}">
+            {{groupe.label}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center m-4">
+      <scheduler-table class="col-md-10" (editEvent)="editCell($event)" [selectedFormation]="selectedFormation" [selectedGroupe]="selectedGroupe" [reloadNbH]="reloadNbH"></scheduler-table>
+    </div>
+
+    <div class="row justify-content-md-center m-4">
+      <form-nb-h [selectedNbH]="selectedNbH" (messageEvent)="receiveMessage($event)"></form-nb-h>
+    </div>
+
+    <div class="footer">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/aenkirch/TeacherOrganizer">Have a look at our GitHub repo</a>
+    </div>
+
+  </div>
+
+</div>
