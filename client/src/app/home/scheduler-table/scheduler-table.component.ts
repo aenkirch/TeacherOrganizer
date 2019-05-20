@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
-import { AppService } from '../app.service';
+import { AppService } from '../../app.service';
 import { ToastrService } from 'ngx-toastr';
 
 /*
